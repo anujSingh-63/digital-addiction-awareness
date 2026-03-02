@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Report - Digital Addiction Awareness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 font-sans text-slate-800">
+
+    <!-- Include Navigation Header -->
+    <%- include('../partial/head.ejs') %>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-8 sm:py-12">
+        
+        <!-- Back to Home Link -->
+        <a href="/" class="text-blue-600 hover:text-blue-800 mb-4 inline-flex items-center gap-2">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </a>
+        
+        <!-- Page Header -->
+        <div class="mb-8 sm:mb-12">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-950 mb-2">
+                        Weekly Report
+                    </h1>
+                    <p class="text-slate-500">Week of Feb 24 - Mar 02, 2026</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="px-4 py-2 bg-white border border-blue-200 text-blue-600 rounded-lg hover:bg-blue-50 transition font-medium flex items-center gap-2">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium flex items-center gap-2">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Stats Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+            <!-- Total Screen Time -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50 hover:shadow-md transition">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-slate-700">Total Screen Time</h3>
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
+                        <i class="fas fa-clock text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-3xl sm:text-4xl font-bold text-blue-950 mb-2">42h 30m</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-600 font-medium text-sm"><i class="fas fa-arrow-down"></i> 15% from last week</span>
+                </div>
+            </div>
+
+            <!-- Average Daily Usage -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50 hover:shadow-md transition">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-slate-700">Avg Daily Usage</h3>
+                    <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-chart-pie text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-3xl sm:text-4xl font-bold text-indigo-950 mb-2">6h 4m</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-red-600 font-medium text-sm"><i class="fas fa-arrow-up"></i> 5% from last week</span>
+                </div>
+            </div>
+
+            <!-- App Category Most Used -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50 hover:shadow-md transition">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-slate-700">Most Used Category</h3>
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600">
+                        <i class="fas fa-mobile-alt text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-2xl sm:text-3xl font-bold text-orange-950 mb-2">Social Media</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-slate-600 font-medium text-sm">18h 45m this week</span>
+                </div>
+            </div>
+
+            <!-- Unlock Count -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50 hover:shadow-md transition">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-slate-700">Phone Unlocks</h3>
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600">
+                        <i class="fas fa-hand-holding-mobile text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-3xl sm:text-4xl font-bold text-purple-950 mb-2">287</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-slate-600 font-medium text-sm">41 times per day</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Breakdown Chart -->
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50 mb-8">
+            <h2 class="text-2xl font-bold text-blue-950 mb-6">Daily Screen Time Breakdown</h2>
+            <div class="space-y-4">
+                <% const days = [
+                    { name: 'Mon', hours: 6.5, percentage: 65 },
+                    { name: 'Tue', hours: 7.2, percentage: 72 },
+                    { name: 'Wed', hours: 5.8, percentage: 58 },
+                    { name: 'Thu', hours: 6.1, percentage: 61 },
+                    { name: 'Fri', hours: 6.9, percentage: 69 },
+                    { name: 'Sat', hours: 5.5, percentage: 55 },
+                    { name: 'Sun', hours: 4.5, percentage: 45 }
+                ] %>
+                <% days.forEach(day => { %>
+                    <div class="flex items-center gap-4">
+                        <span class="w-12 font-semibold text-slate-700"><%= day.name %></span>
+                        <div class="flex-1 bg-slate-100 h-10 rounded-lg overflow-hidden">
+                            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 h-full flex items-center justify-end pr-3 daily-bar" data-width="<%= day.percentage %>">
+                                <span class="text-white text-sm font-semibold"><%= day.hours %>h</span>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+
+        <!-- App Category Usage & Goals Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8">
+            <!-- App Category Breakdown -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50">
+                <h2 class="text-2xl font-bold text-blue-950 mb-6">App Category Usage</h2>
+                <div class="space-y-5">
+                    <% const categories = [
+                        { name: 'Social Media', hours: 18.75, icon: 'fa-hashtag', color: 'text-pink-600', bg: 'bg-pink-100', percentage: 44 },
+                        { name: 'Entertainment', hours: 12.5, icon: 'fa-play', color: 'text-purple-600', bg: 'bg-purple-100', percentage: 29 },
+                        { name: 'Communication', hours: 6.25, icon: 'fa-comments', color: 'text-blue-600', bg: 'bg-blue-100', percentage: 15 },
+                        { name: 'Productivity', hours: 4.75, icon: 'fa-briefcase', color: 'text-green-600', bg: 'bg-green-100', percentage: 11 },
+                        { name: 'Other', hours: 0.25, icon: 'fa-ellipsis-h', color: 'text-slate-600', bg: 'bg-slate-100', percentage: 1 }
+                    ] %>
+                    <% categories.forEach(cat => { %>
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="<%= cat.bg %> w-10 h-10 rounded-lg flex items-center justify-center">
+                                    <i class="fas <%= cat.icon %> <%= cat.color %>"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-semibold text-slate-800"><%= cat.name %></p>
+                                    <p class="text-sm text-slate-500"><%= cat.hours %>h</p>
+                                </div>
+                                <span class="font-bold text-slate-900"><%= cat.percentage %>%</span>
+                            </div>
+                            <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <% 
+                                    let gradientColor = '#64748b';
+                                    if (cat.color === 'text-pink-600') gradientColor = '#ec4899';
+                                    else if (cat.color === 'text-purple-600') gradientColor = '#9333ea';
+                                    else if (cat.color === 'text-blue-600') gradientColor = '#2563eb';
+                                    else if (cat.color === 'text-green-600') gradientColor = '#16a34a';
+                                %>
+                                <div class="h-full rounded-full category-bar" data-width="<%= cat.percentage %>" data-color="<%= gradientColor %>"></div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+
+            <!-- Weekly Goals -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50">
+                <h2 class="text-2xl font-bold text-blue-950 mb-6">Goals & Achievements</h2>
+                <div class="space-y-4">
+                    <!-- Goal 1 -->
+                    <div class="border-l-4 border-green-500 pl-4 py-3">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                            <h3 class="font-semibold text-slate-800">Under 7 Hours Daily</h3>
+                        </div>
+                        <p class="text-sm text-slate-600">Achieved 5 out of 7 days</p>
+                        <div class="mt-2 h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="w-5/7 h-full bg-green-500"></div>
+                        </div>
+                    </div>
+
+                    <!-- Goal 2 -->
+                    <div class="border-l-4 border-yellow-500 pl-4 py-3">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-hourglass-half text-yellow-500 text-xl"></i>
+                            <h3 class="font-semibold text-slate-800">Reduce Social Media</h3>
+                        </div>
+                        <p class="text-sm text-slate-600">18h 45m this week (target: 15h)</p>
+                        <div class="mt-2 h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="w-3/5 h-full bg-yellow-500"></div>
+                        </div>
+                    </div>
+
+                    <!-- Goal 3 -->
+                    <div class="border-l-4 border-orange-500 pl-4 py-3">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-circle text-orange-500 text-xl"></i>
+                            <h3 class="font-semibold text-slate-800">Morning Routine</h3>
+                        </div>
+                        <p class="text-sm text-slate-600">First use after 9:00 AM - 3 days</p>
+                        <div class="mt-2 h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="w-3/7 h-full bg-orange-500"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insights & Recommendations -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8">
+            <!-- Key Insights -->
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 p-6 sm:p-8 rounded-2xl shadow-sm text-white">
+                <h2 class="text-2xl font-bold mb-6">Key Insights</h2>
+                <div class="space-y-4">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-lightbulb text-2xl text-yellow-300"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-1">Peak Usage Time</p>
+                            <p class="text-blue-100 text-sm">Your phone usage peaks between 7-9 PM, with an average of 2h 30m per day.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-lightbulb text-2xl text-yellow-300"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-1">Productive Trend</p>
+                            <p class="text-blue-100 text-sm">Weekend usage decreased by 25% compared to weekdays, showing good digital discipline on rest days.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-lightbulb text-2xl text-yellow-300"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-1">App Notifications</p>
+                            <p class="text-blue-100 text-sm">Social media apps generated 89% of your unlocks this week. Consider disabling non-essential notifications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personalized Recommendations -->
+            <div class="bg-gradient-to-br from-emerald-600 to-teal-700 p-6 sm:p-8 rounded-2xl shadow-sm text-white">
+                <h2 class="text-2xl font-bold mb-6">Recommendations</h2>
+                <div class="space-y-4">
+                    <div class="bg-white bg-opacity-10 p-4 rounded-lg">
+                        <div class="flex gap-3 mb-2">
+                            <i class="fas fa-check text-emerald-300 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-sm">Set App Limits</p>
+                                <p class="text-emerald-100 text-xs mt-1">Limit social media to 15 minutes per session</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white bg-opacity-10 p-4 rounded-lg">
+                        <div class="flex gap-3 mb-2">
+                            <i class="fas fa-check text-emerald-300 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-sm">Phone-Free Time</p>
+                                <p class="text-emerald-100 text-xs mt-1">Create a 1-hour no-phone zone after dinner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white bg-opacity-10 p-4 rounded-lg">
+                        <div class="flex gap-3 mb-2">
+                            <i class="fas fa-check text-emerald-300 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-sm">Grayscale Mode</p>
+                                <p class="text-emerald-100 text-xs mt-1">Use grayscale display during peak usage hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Comparison -->
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50 mb-8">
+            <h2 class="text-2xl font-bold text-blue-950 mb-6">Week-on-Week Comparison</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold text-slate-700 mb-4">This Week</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-600">Total Screen Time</span>
+                            <span class="font-bold text-lg text-blue-950">42h 30m</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-600">Avg Daily Usage</span>
+                            <span class="font-bold text-lg text-blue-950">6h 4m</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-600">Phone Unlocks</span>
+                            <span class="font-bold text-lg text-blue-950">287</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-600">Most Used App</span>
+                            <span class="font-bold text-lg text-blue-950">Instagram</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-slate-700 mb-4">Last Week</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-600">Total Screen Time</span>
+                            <span class="font-bold text-lg text-slate-900">50h 15m</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-600">Avg Daily Usage</span>
+                            <span class="font-bold text-lg text-slate-900">7h 11m</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-600">Phone Unlocks</span>
+                            <span class="font-bold text-lg text-slate-900">312</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-600">Most Used App</span>
+                            <span class="font-bold text-lg text-slate-900">TikTok</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p class="text-green-900 font-semibold">✓ Great Progress!</p>
+                <p class="text-green-700 text-sm mt-1">You've reduced your screen time by 15% this week compared to last week. Keep up the fantastic efforts to improve your digital wellness! 🎉</p>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
+            <button class="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-300 transition transform hover:scale-105">
+                <i class="fas fa-download mr-2"></i> Download Report
+            </button>
+            <button class="px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-blue-200 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition">
+                <i class="fas fa-share mr-2"></i> Share Report
+            </button>
+            <button class="px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-blue-200 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition">
+                <i class="fas fa-cog mr-2"></i> Adjust Goals
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-12 sm:mt-16 py-8 sm:py-12 px-4 sm:px-6 md:px-10 bg-blue-950 text-white">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-blue-100">&copy; 2026 Digital Addiction Awareness. Your journey to digital wellness starts here.</p>
+            <div class="mt-4 flex gap-6 justify-center">
+                <a href="#" class="hover:text-blue-300 transition text-sm">Privacy Policy</a>
+                <a href="#" class="hover:text-blue-300 transition text-sm">Terms of Service</a>
+                <a href="#" class="hover:text-blue-300 transition text-sm">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Apply dynamic widths to progress bars
+        document.querySelectorAll('.daily-bar').forEach(el => {
+            const width = el.getAttribute('data-width');
+            el.style.width = width + '%';
+        });
+
+        document.querySelectorAll('.category-bar').forEach(el => {
+            const width = el.getAttribute('data-width');
+            const color = el.getAttribute('data-color');
+            el.style.width = width + '%';
+            el.style.backgroundColor = color;
+        });
+    </script>
+
+</body>
+</html>

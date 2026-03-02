@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Alerts - Digital Addiction Awareness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 font-sans text-slate-800">
+
+    <!-- Include Navigation Header -->
+    <%- include('../partial/head.ejs') %>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-8 sm:py-12">
+        
+        <!-- Back to Home Link -->
+        <a href="/" class="text-blue-600 hover:text-blue-800 mb-4 inline-flex items-center gap-2">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </a>
+        
+        <!-- Page Header -->
+        <div class="mb-8 sm:mb-12">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-950 mb-2">
+                        Smart Alerts
+                    </h1>
+                    <p class="text-slate-500">Stay informed with timely usage alerts and wellness tips</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="px-4 py-2 bg-white border border-blue-200 text-blue-600 rounded-lg hover:bg-blue-50 transition font-medium flex items-center gap-2">
+                        <i class="fas fa-sliders-h"></i> Settings
+                    </button>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium flex items-center gap-2">
+                        <i class="fas fa-check"></i> Mark All Read
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert Statistics -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+            <!-- Total Alerts -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-slate-700">Alerts This Week</h3>
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
+                        <i class="fas fa-bell text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-3xl sm:text-4xl font-bold text-blue-950 mb-2">24</p>
+                <p class="text-sm text-slate-500"><i class="fas fa-arrow-down text-green-600"></i> 12% from last week</p>
+            </div>
+
+            <!-- Unread -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-slate-700">Unread Alerts</h3>
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600">
+                        <i class="fas fa-envelope text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-3xl sm:text-4xl font-bold text-orange-950 mb-2">5</p>
+                <p class="text-sm text-slate-500">Review your recent alerts</p>
+            </div>
+
+            <!-- Usage Warnings -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-slate-700">Usage Warnings</h3>
+                    <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600">
+                        <i class="fas fa-exclamation-triangle text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-3xl sm:text-4xl font-bold text-red-950 mb-2">3</p>
+                <p class="text-sm text-slate-500">Apps exceeded limits</p>
+            </div>
+
+            <!-- Wellness Tips -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-slate-700">Tips Received</h3>
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600">
+                        <i class="fas fa-lightbulb text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-3xl sm:text-4xl font-bold text-green-950 mb-2">16</p>
+                <p class="text-sm text-slate-500">Health & wellness advice</p>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex gap-2 sm:gap-4 mb-8 overflow-x-auto pb-2">
+            <button class="px-4 py-2 bg-blue-600 text-white rounded-full font-medium whitespace-nowrap hover:bg-blue-700 transition flex items-center gap-2">
+                <i class="fas fa-inbox"></i> All Alerts
+            </button>
+            <button class="px-4 py-2 bg-white border border-blue-200 text-blue-600 rounded-full font-medium whitespace-nowrap hover:bg-blue-50 transition flex items-center gap-2">
+                <i class="fas fa-exclamation-circle"></i> Warnings
+            </button>
+            <button class="px-4 py-2 bg-white border border-blue-200 text-blue-600 rounded-full font-medium whitespace-nowrap hover:bg-blue-50 transition flex items-center gap-2">
+                <i class="fas fa-lightbulb"></i> Tips
+            </button>
+            <button class="px-4 py-2 bg-white border border-blue-200 text-blue-600 rounded-full font-medium whitespace-nowrap hover:bg-blue-50 transition flex items-center gap-2">
+                <i class="fas fa-info-circle"></i> Information
+            </button>
+        </div>
+
+        <!-- Alerts List -->
+        <div class="space-y-4 mb-8">
+            <!-- Alert 1 - Unread Warning -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-red-200 hover:shadow-md transition relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-red-600"></div>
+                <div class="flex items-start gap-4 sm:gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-red-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg mb-2">Instagram Usage Limit Exceeded</h3>
+                                <p class="text-slate-600 mb-3">You've exceeded your daily limit for Instagram by 45 minutes. Consider taking a digital break to protect your mental health.</p>
+                                <div class="flex flex-wrap gap-3 text-sm">
+                                    <span class="text-red-600 font-semibold"><i class="fas fa-clock"></i> Today at 3:45 PM</span>
+                                    <span class="bg-red-50 text-red-700 px-3 py-1 rounded-full">Usage Warning</span>
+                                </div>
+                            </div>
+                            <button class="flex-shrink-0 text-slate-400 hover:text-slate-600 transition">
+                                <i class="fas fa-times text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="mt-4 flex gap-2">
+                            <button class="text-sm bg-red-100 text-red-700 px-4 py-2 rounded-lg hover:bg-red-200 transition font-medium">
+                                Set New Limit
+                            </button>
+                            <button class="text-sm bg-slate-100 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-200 transition font-medium">
+                                Dismiss
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alert 2 - Wellness Tip -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-green-200 hover:shadow-md transition relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-green-600"></div>
+                <div class="flex items-start gap-4 sm:gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-leaf text-green-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg mb-2">Evening Wellness Reminder</h3>
+                                <p class="text-slate-600 mb-3">It's 9:00 PM - Time for a digital detox! Put your phone away 1 hour before bed to improve sleep quality. Your screen-free evening will help you rest better.</p>
+                                <div class="flex flex-wrap gap-3 text-sm">
+                                    <span class="text-green-600 font-semibold"><i class="fas fa-clock"></i> Today at 9:00 PM</span>
+                                    <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full">Wellness Tip</span>
+                                </div>
+                            </div>
+                            <button class="flex-shrink-0 text-slate-400 hover:text-slate-600 transition">
+                                <i class="fas fa-times text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="mt-4">
+                            <button class="text-sm bg-green-100 text-green-700 px-4 py-2 rounded-lg hover:bg-green-200 transition font-medium">
+                                <i class="fas fa-check-circle"></i> I'll Try This
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alert 3 - Information -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-200 hover:shadow-md transition relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
+                <div class="flex items-start gap-4 sm:gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-info-circle text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg mb-2">Gaming Time Alert</h3>
+                                <p class="text-slate-600 mb-3">You've been playing games for 2 hours today. Prolonged gaming can cause eye strain and reduce physical activity. Take regular breaks!</p>
+                                <div class="flex flex-wrap gap-3 text-sm">
+                                    <span class="text-blue-600 font-semibold"><i class="fas fa-clock"></i> Today at 6:30 PM</span>
+                                    <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">Information</span>
+                                </div>
+                            </div>
+                            <button class="flex-shrink-0 text-slate-400 hover:text-slate-600 transition">
+                                <i class="fas fa-times text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="mt-4 flex gap-2">
+                            <button class="text-sm bg-blue-100 text-blue-700 px-4 py-2 rounded-lg hover:bg-blue-200 transition font-medium">
+                                Read More
+                            </button>
+                            <button class="text-sm bg-slate-100 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-200 transition font-medium">
+                                Dismiss
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alert 4 - Usage Warning -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-orange-200 hover:shadow-md transition relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-orange-600"></div>
+                <div class="flex items-start gap-4 sm:gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-orange-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-orange-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg mb-2">70% Daily Limit Reached</h3>
+                                <p class="text-slate-600 mb-3">You've used 70% of your daily screen time limit. You have approximately 2 hours remaining. Use your time wisely!</p>
+                                <div class="flex flex-wrap gap-3 text-sm">
+                                    <span class="text-orange-600 font-semibold"><i class="fas fa-clock"></i> Today at 5:15 PM</span>
+                                    <span class="bg-orange-50 text-orange-700 px-3 py-1 rounded-full">Progress Alert</span>
+                                </div>
+                            </div>
+                            <button class="flex-shrink-0 text-slate-400 hover:text-slate-600 transition">
+                                <i class="fas fa-times text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alert 5 - Positive Achievement -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-purple-200 hover:shadow-md transition relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-purple-600"></div>
+                <div class="flex items-start gap-4 sm:gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-star text-purple-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg mb-2">Great Job! Focus Achievement</h3>
+                                <p class="text-slate-600 mb-3">You've successfully maintained focus for 3 consecutive hours without phone interruptions. Keep up this momentum! 🎉</p>
+                                <div class="flex flex-wrap gap-3 text-sm">
+                                    <span class="text-purple-600 font-semibold"><i class="fas fa-clock"></i> Yesterday at 2:30 PM</span>
+                                    <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">Achievement</span>
+                                </div>
+                            </div>
+                            <button class="flex-shrink-0 text-slate-400 hover:text-slate-600 transition">
+                                <i class="fas fa-times text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert Settings Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8">
+            <!-- Notification Preferences -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50">
+                <h2 class="text-2xl font-bold text-blue-950 mb-6">Notification Preferences</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-bell text-blue-600 text-lg"></i>
+                            <div>
+                                <p class="font-semibold text-slate-800">Push Notifications</p>
+                                <p class="text-sm text-slate-500">Receive alerts on your device</p>
+                            </div>
+                        </div>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 rounded text-blue-600" checked>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-blue-600 text-lg"></i>
+                            <div>
+                                <p class="font-semibold text-slate-800">Email Summaries</p>
+                                <p class="text-sm text-slate-500">Weekly digest of alerts</p>
+                            </div>
+                        </div>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 rounded text-blue-600" checked>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-lightbulb text-green-600 text-lg"></i>
+                            <div>
+                                <p class="font-semibold text-slate-800">Wellness Tips</p>
+                                <p class="text-sm text-slate-500">Get daily health recommendations</p>
+                            </div>
+                        </div>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 rounded text-blue-600" checked>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-exclamation-triangle text-red-600 text-lg"></i>
+                            <div>
+                                <p class="font-semibold text-slate-800">Limit Warnings</p>
+                                <p class="text-sm text-slate-500">Alerts when app limits are exceeded</p>
+                            </div>
+                        </div>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 rounded text-blue-600" checked>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alert Schedule -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50">
+                <h2 class="text-2xl font-bold text-blue-950 mb-6">Alert Schedule</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-800 mb-2">Quiet Hours</label>
+                        <div class="flex gap-3">
+                            <input type="time" value="21:00" class="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            <span class="flex items-center text-slate-600">to</span>
+                            <input type="time" value="08:00" class="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2">No alerts during these hours</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-800 mb-2">Alert Frequency</label>
+                        <select class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            <option>Every 30 minutes</option>
+                            <option>Every 1 hour</option>
+                            <option>Every 2 hours</option>
+                            <option>Real-time (immediately)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-800 mb-2">Alert Priority</label>
+                        <select class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            <option>All alerts</option>
+                            <option>Important only</option>
+                            <option>Critical only</option>
+                        </select>
+                    </div>
+
+                    <button class="w-full mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium">
+                        Save Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert History -->
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50">
+            <h2 class="text-2xl font-bold text-blue-950 mb-6">Alert History</h2>
+            <div class="space-y-3">
+                <% const history = [
+                    { date: 'Feb 27, 2:30 PM', title: 'TikTok Usage Alert', type: 'warning' },
+                    { date: 'Feb 27, 9:00 PM', title: 'Evening Wellness Reminder', type: 'tip' },
+                    { date: 'Feb 26, 6:15 PM', title: '70% Daily Limit Reached', type: 'progress' },
+                    { date: 'Feb 26, 3:45 PM', title: 'Facebook Exceeded Limit', type: 'warning' },
+                    { date: 'Feb 25, 12:00 PM', title: 'Digital Detox Success', type: 'achievement' }
+                ] %>
+                <% history.forEach(item => { %>
+                    <div class="flex items-center justify-between p-4 border-b border-slate-100 last:border-0 hover:bg-slate-50 transition">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center <%= item.type === 'warning' ? 'bg-red-100 text-red-600' : item.type === 'tip' ? 'bg-green-100 text-green-600' : item.type === 'progress' ? 'bg-orange-100 text-orange-600' : 'bg-purple-100 text-purple-600' %>">
+                                <i class="fas <%= item.type === 'warning' ? 'fa-exclamation' : item.type === 'tip' ? 'fa-leaf' : item.type === 'progress' ? 'fa-chart-pie' : 'fa-star' %>"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-slate-800"><%= item.title %></p>
+                                <p class="text-sm text-slate-500"><%= item.date %></p>
+                            </div>
+                        </div>
+                        <button class="text-slate-400 hover:text-slate-600 transition">
+                            <i class="fas fa-archive"></i>
+                        </button>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-12 sm:mt-16 py-8 sm:py-12 px-4 sm:px-6 md:px-10 bg-blue-950 text-white">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-blue-100">&copy; 2026 Digital Addiction Awareness. Your journey to digital wellness starts here.</p>
+            <div class="mt-4 flex gap-6 justify-center">
+                <a href="#" class="hover:text-blue-300 transition text-sm">Privacy Policy</a>
+                <a href="#" class="hover:text-blue-300 transition text-sm">Terms of Service</a>
+                <a href="#" class="hover:text-blue-300 transition text-sm">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

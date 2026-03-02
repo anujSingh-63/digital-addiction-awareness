@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Addiction Awareness - Track & Control Your Digital Life</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 font-sans text-slate-800">
+
+    <!-- Include Navigation Header -->
+    <%- include('../partial/head.ejs') %>
+
+    <!-- Hero Section -->
+    <header class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-16">
+                <!-- Text Content -->
+                <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-blue-950 leading-tight">
+                        Take Control of Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Digital Life</span>
+                    </h1>
+                    <p class="text-base sm:text-lg md:text-xl text-slate-500 leading-relaxed">
+                        Track your screen time, analyze your habits, and improve your focus. Break free from digital addiction with our comprehensive awareness platform.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-6 justify-center md:justify-start">
+                        <a href="/signup" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-300 transition transform hover:scale-105 text-sm sm:text-base text-center">
+                            Get Started Free
+                        </a>
+                        <a href="/login" class="border-2 border-blue-200 text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-blue-50 transition text-sm sm:text-base text-center">
+                            Login
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    <!-- Dangers Section -->
+    <section id="about" class="py-16 sm:py-24 px-4 sm:px-6 md:px-10 bg-gradient-to-b from-white to-blue-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-950 mb-4">
+                    Why Digital Addiction is Dangerous?
+                </h2>
+                <p class="text-slate-500 text-base sm:text-lg max-w-2xl mx-auto">
+                    Understanding the impact of excessive digital use on your mental and physical health
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <% const dangers = [
+                    { title: 'Sleep Problems', desc: 'Screen time disrupts your natural sleep cycle', icon: 'fa-moon', color: 'text-blue-800' },
+                    { title: 'Reduced Focus', desc: 'Decreased concentration and attention span', icon: 'fa-brain', color: 'text-pink-400' },
+                    { title: 'Anxiety & Stress', desc: 'Constant connectivity increases stress levels', icon: 'fa-frown', color: 'text-orange-400' },
+                    { title: 'Productivity Loss', desc: 'Less time for meaningful activities', icon: 'fa-chart-line', color: 'text-teal-500' }
+                ] %>
+                <% dangers.forEach(item => { %>
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50 hover:shadow-lg hover:border-blue-100 transition transform hover:scale-105 cursor-default">
+                        <i class="fas <%= item.icon %> text-4xl sm:text-5xl <%= item.color %> mb-4 block"></i>
+                        <p class="font-bold text-blue-900 text-lg mb-2"><%= item.title %></p>
+                        <p class="text-slate-500 text-sm"><%= item.desc %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 sm:py-24 px-4 sm:px-6 md:px-10 bg-gradient-to-b from-blue-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-950 mb-4">
+                    What Our System Does
+                </h2>
+                <p class="text-slate-500 text-base sm:text-lg max-w-2xl mx-auto">
+                    Powerful tools to track, analyze, and improve your digital habits
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <% const features = [
+                    { title: 'Track Screen Time', desc: 'Monitor your daily usage across all devices.', icon: 'fa-clock', color: 'bg-blue-600', link: '/track-screen-time', id: 'feature-track' },
+                    { title: 'Weekly Reports', desc: 'Get detailed insights into your habits.', icon: 'fa-chart-bar', color: 'bg-indigo-600', link: '/weekly-report', id: 'feature-reports' },
+                    { title: 'Smart Alerts', desc: 'Receive timely usage warnings and tips.', icon: 'fa-bell', color: 'bg-orange-500', link: '/smart-alerts', id: 'feature-alerts' },
+                    { title: 'Detox Challenges', desc: 'Join challenges and improve your habits.', icon: 'fa-bullseye', color: 'bg-purple-600', link: '/detox-challenges', id: 'feature-challenges' }
+                ] %>
+                <% features.forEach((f, index) => { %>
+                    <% if (f.link) { %>
+                        <a href="<%= f.link %>" id="<%= f.id %>" class="feature-card bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50 hover:shadow-lg hover:border-blue-200 transition transform hover:scale-105 cursor-pointer" data-feature="<%= f.id %>">
+                            <div class="feature-icon <%= f.color %> w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white text-2xl sm:text-3xl transition-all duration-300">
+                                <i class="fas <%= f.icon %>"></i>
+                            </div>
+                            <h3 class="font-bold text-blue-900 mb-2 text-center"><%= f.title %></h3>
+                            <p class="text-slate-500 text-sm text-center"><%= f.desc %></p>
+                        </a>
+                    <% } else { %>
+                        <div id="<%= f.id %>" class="feature-card bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-blue-50 hover:shadow-lg transition cursor-pointer" data-feature="<%= f.id %>">
+                            <div class="feature-icon <%= f.color %> w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white text-2xl sm:text-3xl transition-all duration-300">
+                                <i class="fas <%= f.icon %>"></i>
+                            </div>
+                            <h3 class="font-bold text-blue-900 mb-2 text-center"><%= f.title %></h3>
+                            <p class="text-slate-500 text-sm text-center"><%= f.desc %></p>
+                        </div>
+                    <% } %>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 md:px-10 bg-gradient-to-b from-white to-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-950 mb-4">
+                    How It Works
+                </h2>
+                <p class="text-slate-500 text-base sm:text-lg max-w-2xl mx-auto">
+                    Get started in three simple steps to reclaim control of your digital life
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 md:gap-12">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center w-full sm:w-auto">
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-50 p-8 sm:p-10 rounded-3xl mb-4 border-2 border-blue-200">
+                        <i class="fas fa-user-plus text-4xl sm:text-5xl text-blue-600"></i>
+                    </div>
+                    <p class="font-bold text-blue-900 text-center">
+                        <span class="inline-flex items-center justify-center bg-blue-600 text-white rounded-full w-8 h-8 text-sm font-bold mr-2">1</span>
+                        Sign Up
+                    </p>
+                    <p class="text-slate-500 text-sm text-center mt-2">Create your account in seconds</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden sm:block">
+                    <i class="fas fa-chevron-right text-3xl md:text-4xl text-blue-200"></i>
+                </div>
+                <div class="sm:hidden w-0.5 h-8 bg-gradient-to-b from-blue-300 to-transparent"></div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center w-full sm:w-auto">
+                    <div class="bg-gradient-to-br from-indigo-100 to-indigo-50 p-8 sm:p-10 rounded-3xl mb-4 border-2 border-indigo-200">
+                        <i class="fas fa-mobile-alt text-4xl sm:text-5xl text-indigo-600"></i>
+                    </div>
+                    <p class="font-bold text-blue-900 text-center">
+                        <span class="inline-flex items-center justify-center bg-indigo-600 text-white rounded-full w-8 h-8 text-sm font-bold mr-2">2</span>
+                        Track Your Time
+                    </p>
+                    <p class="text-slate-500 text-sm text-center mt-2">Monitor your daily screen time</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden sm:block">
+                    <i class="fas fa-chevron-right text-3xl md:text-4xl text-blue-200"></i>
+                </div>
+                <div class="sm:hidden w-0.5 h-8 bg-gradient-to-b from-blue-300 to-transparent"></div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center w-full sm:w-auto">
+                    <div class="bg-gradient-to-br from-purple-100 to-purple-50 p-8 sm:p-10 rounded-3xl mb-4 border-2 border-purple-200">
+                        <i class="fas fa-chart-line text-4xl sm:text-5xl text-purple-600"></i>
+                    </div>
+                    <p class="font-bold text-blue-900 text-center">
+                        <span class="inline-flex items-center justify-center bg-purple-600 text-white rounded-full w-8 h-8 text-sm font-bold mr-2">3</span>
+                        Get Analysis
+                    </p>
+                    <p class="text-slate-500 text-sm text-center mt-2">Receive detailed insights</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 sm:py-20 px-4 sm:px-6 md:px-10 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+                Start Your Digital Detox Today
+            </h2>
+            <p class="text-base sm:text-lg text-blue-100 mb-8 sm:mb-10">
+                Join thousands of people who are taking control of their digital habits and improving their quality of life.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/signup" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-blue-50 transition transform hover:scale-105 shadow-xl text-center">
+                    Create Account
+                </a>
+                <a href="/login" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-white hover:bg-opacity-10 transition text-center">
+                    Sign In
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 md:px-10 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+                <div class="text-center p-6 sm:p-8 bg-gradient-to-br from-blue-50 to-white rounded-2xl border border-blue-100">
+                    <p class="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">50K+</p>
+                    <p class="text-slate-600 font-semibold text-sm sm:text-base">Active Users</p>
+                </div>
+                <div class="text-center p-6 sm:p-8 bg-gradient-to-br from-indigo-50 to-white rounded-2xl border border-indigo-100">
+                    <p class="text-3xl sm:text-4xl font-bold text-indigo-600 mb-2">100M+</p>
+                    <p class="text-slate-600 font-semibold text-sm sm:text-base">Hours Tracked</p>
+                </div>
+                <div class="text-center p-6 sm:p-8 bg-gradient-to-br from-purple-50 to-white rounded-2xl border border-purple-100">
+                    <p class="text-3xl sm:text-4xl font-bold text-purple-600 mb-2">92%</p>
+                    <p class="text-slate-600 font-semibold text-sm sm:text-base">Satisfaction Rate</p>
+                </div>
+                <div class="text-center p-6 sm:p-8 bg-gradient-to-br from-pink-50 to-white rounded-2xl border border-pink-100">
+                    <p class="text-3xl sm:text-4xl font-bold text-pink-600 mb-2">150+</p>
+                    <p class="text-slate-600 font-semibold text-sm sm:text-base">Countries</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <%- include('../partial/footer.ejs') %>
+
+    <script>
+        // Feature Card Click Handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            featureCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Only handle non-link clicks
+                    if (e.target.closest('a')) {
+                        return; // Let the link navigate naturally
+                    }
+                    
+                    const featureId = this.getAttribute('data-feature');
+                    
+                    // Remove active state from all cards
+                    featureCards.forEach(c => {
+                        c.classList.remove('feature-active', 'shadow-lg', 'border-blue-200');
+                        c.classList.add('border-blue-50', 'shadow-sm');
+                    });
+                    
+                    // Add active state only to clicked card
+                    this.classList.remove('border-blue-50', 'shadow-sm');
+                    this.classList.add('feature-active', 'shadow-lg', 'border-blue-200');
+                    
+                    // Add animation effect
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transition = 'transform 0.3s ease';
+                        this.style.transform = 'scale(1)';
+                    }, 100);
+                });
+                
+                // Handle hover state independently
+                card.addEventListener('mouseenter', function() {
+                    if (!this.classList.contains('feature-active')) {
+                        this.classList.add('shadow-md');
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('feature-active')) {
+                        this.classList.remove('shadow-md');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
